@@ -11,7 +11,7 @@
       "type": "triton",
       "triton_url": "{{user `triton_url`}}",
       "triton_account": "{{user `triton_account`}}",
-      "triton_key_id": "{{user `triton_key_id``}}",
+      "triton_key_id": "{{user `triton_key_id`}}",
 
       "source_machine_name": "rainloop-builder",
       "source_machine_package": "g4-highcpu-1G",
