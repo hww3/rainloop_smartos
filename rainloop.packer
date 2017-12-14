@@ -9,7 +9,7 @@
   "builders": [
     {
       "type": "triton",
-      "triton_url": "{{user `triton_url`}}"
+      "triton_url": "{{user `triton_url`}}",
       "triton_account": "{{user `triton_account`}}",
       "triton_key_id": "{{user `triton_key_id``}}",
 
