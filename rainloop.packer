@@ -1,0 +1,59 @@
+{
+  "variables": {
+    "admin_password": "",
+    "triton_url": "",
+    "triton_account": "",
+    "triton_key_id": ""
+  },
+
+  "builders": [
+    {
+      "type": "triton",
+      "triton_url": "{{user `triton_url`}}"
+      "triton_account": "{{user `triton_account`}}",
+      "triton_key_id": "{{user `triton_key_id``}}",
+
+      "source_machine_name": "rainloop-builder",
+      "source_machine_package": "g4-highcpu-1G",
+      "source_machine_image_filter": {
+        "name": "base-64",
+        "most_recent": "true"
+      },
+
+      "ssh_username": "root",
+
+      "image_name": "rainloop_image",
+      "image_version": "1.0.0"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "adminPassword.php",
+      "destination": "/adminPassword.php"
+    },
+    {
+      "type": "file",
+      "source": "rainloop.conf",
+      "destination": "/rainloop.conf"
+    },
+    {
+      "type": "file",
+      "source": "letsencrypt_setup.sh",
+      "destination": "/letsencrypt_setup.sh"
+    },
+    {
+      "type": "file",
+      "source": "letsencrypt_setup.xml",
+      "destination": "/letsencrypt_setup.xml"
+    },
+    {
+      "type": "shell",
+      "environment_vars": ["RAINLOOP_ADMIN_PASSWORD={{user `admin_password`}}"],
+      "scripts": [
+	"provision_rainloop.sh"
+      ]
+    }
+  ]
+}
