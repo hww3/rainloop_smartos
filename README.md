@@ -15,7 +15,7 @@ Rainloop is a simple, modern & fast web-based client. More details on the [offic
 
 ### Build-time variables
 
-packer build  -var-file local_vars.json -var admin_password=PASSWORD  rainloop.packer &&  triton inst create --name rainloop2 -m certbot_email=email_addr -m server_name=server.fqdn rainloop_image g4-highcpu-256M
+packer build  -var-file=local_vars.json -var admin_password=PASSWORD  rainloop.packer &&  triton inst create --name rainloop2 -m certbot_email=email_addr -m server_name=server.fqdn rainloop_image g4-highcpu-256M
 
 ### Ports
 
